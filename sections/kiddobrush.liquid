@@ -1,0 +1,267 @@
+<style>
+#ProductPrice{
+  padding-left:0 !important;
+  padding-right: 10px !important;
+}
+  .price-container {
+    margin-top: -9px !important;
+}
+</style>
+{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
+<div itemscope itemtype="http://schema.org/Product"
+     id="section-{{ section.id }}"
+     data-picker-type="{{ section.settings.product_selector }}"
+     data-section-id="{{ section.id }}"
+     data-product-id="{{ product.id }}"
+     data-product-handle="{{ product.handle }}"
+     data-section-type="product-template"
+     data-product-first-available-variant="{{ product.selected_or_first_available_variant }}"
+     data-image-zoom-type="{{ section.settings.enable_image_zoom }}"
+     data-enable-history-state="true"
+     data-stacked-layout="{% if section.settings.media_layout == "stacked" %}true{% else %}false{% endif %}"
+     data-product-selector="{{ section.settings.product_selector }}"
+     {%- if first_3d_model -%}data-has-model="true"{%- endif -%}>
+  {%- render 'kiddobrush' with product as product -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Product Pages",
+  	"class": "product-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product page"
+      },
+  	  {
+        "type": "checkbox",
+        "id": "show_product_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_type",
+        "label": "Show product type",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_sku",
+        "label": "Show SKU",
+        "default": false
+      },
+  	  {
+        "type": "checkbox",
+        "id": "product_title_large",
+        "label": "Enable large product title",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_tags",
+        "label": "Show product tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sharing_icons",
+        "label": "Show sharing icons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_collections",
+        "label": "Show product collections",
+        "default": true
+      },
+  	  {
+        "type": "header",
+        "content": "Media",
+    		"info": "Learn more about [media types](https://help.shopify.com/manual/products/product-media)"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_fading_effect",
+        "label": "Enable carousel fading effect",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_image_zoom",
+        "label": "Enable image zoom",
+    		"default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_video_looping",
+        "label": "Enable video looping",
+        "default": true
+      },
+  	  {
+        "type": "select",
+        "id": "media_layout",
+        "label": "Gallery layout",
+        "default": "thumbnails",
+        "options": [
+    		  {
+            "value": "stacked",
+            "label": "Stacked"
+          },
+     		  {
+            "value": "thumbnails",
+            "label": "Thumbnails"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "image_size",
+        "label": "Image size",
+        "default": "medium",
+        "options": [
+    		  {
+            "value": "small",
+            "label": "Small"
+          },
+     		  {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+           "value": "large",
+           "label": "Large"
+         }
+        ]
+      },
+  	  {
+        "type": "header",
+        "content": "Product form"
+      },
+  	  {
+        "type": "checkbox",
+        "id": "quantity_enabled",
+        "label": "Show quantity picker",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "product_selector",
+        "label": "Picker type",
+    		"default": "select",
+        "options": [
+          {
+            "value": "radio",
+            "label": "Button"
+          },
+          {
+            "value": "select",
+            "label": "Dropdown"
+          }
+        ]
+      },
+  	  {
+        "type": "header",
+        "content": "Product description"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_description",
+        "label": "Show product description",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_split_description",
+        "label": "Enable split description",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "This feature allows you to show a brief description under the product price. Add the shortcode [split_description] in the HTML section of your product description to split it."
+      },
+  	  {
+        "type": "checkbox",
+        "id": "description_full",
+        "label": "Full width",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "dbtfy_product_description_position",
+        "label": "Position",
+        "default": "separate_section",
+        "options": [
+          {
+            "value": "under_addtocart",
+            "label": "Under add-to-cart button"
+          },
+          {
+            "value": "separate_section",
+            "label": "In a separate section"
+          }
+        ]
+      },
+	    {
+        "type": "select",
+        "id": "description_style",
+        "label": "Description style",
+        "default": "section-border",
+        "options": [
+          {
+            "value": "section-blank",
+            "label": "Blank background"
+          },
+    		  {
+            "value": "section-default",
+            "label": "Accent background"
+          },
+          {
+            "value": "section-border",
+            "label": "Border top"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Text alignment (desktop)",
+        "default": "text-center",
+        "options": [
+          {
+            "value": "",
+            "label": "Left"
+          },
+     		  {
+            "value": "text-center",
+            "label": "Center"
+          },
+          {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment_mobile",
+        "label": "Text alignment (mobile)",
+        "default": "small--text-center",
+        "options": [
+          {
+            "value": "small--text-left",
+            "label": "Left"
+          },
+     		  {
+            "value": "small--text-center",
+            "label": "Center"
+          },
+          {
+            "value": "small--text-right",
+            "label": "Right"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

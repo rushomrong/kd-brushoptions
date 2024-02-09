@@ -1,0 +1,688 @@
+<style>
+
+.accordion {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+          }
+
+          .accordion-section {
+            border: 1px solid rgba(198,198,198,.55);
+            margin-bottom: 5px;
+            overflow: hidden;
+          }
+
+          .accordion-title {
+            cursor: pointer;
+            padding: 10px;
+            border-bottom: 1px solid rgba(198,198,198,.55);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .accordion-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: auto;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+          }
+
+          .accordion-content.active {
+            max-height: max-content;
+            opacity: 1;
+          }
+
+          .accordion-title .icon-caret {
+            fill: currentColor;
+            transition: transform 0.3s ease-out;
+          }
+
+          .accordion-section.active .accordion-title .icon-caret {
+            transform: rotate(180deg);
+          }
+
+  .icon-caret {
+            width: 10px;
+            height: 6px;
+            margin-left: 5px;
+            transition: transform 0.3s ease-out;
+          }
+
+          .accordion-section.active .icon-caret {
+            transform: rotate(180deg);
+          }
+
+          .accordion-content > div {
+            padding: 10px;
+          }
+
+          .accordion-content p {
+            margin-bottom: 0 !important;
+          }
+  
+
+  .line-item-property__field, .line-item-property__field2 {
+    display: none;
+  }
+
+  div#kiddo_option_wrapper > div {
+    display: flex;
+    gap: 20px;
+
+}
+div#kiddo_option_wrapper .preview {
+      height: 90px;
+    width: 90px;
+    border-radius: 8px;
+  background-position: center top;
+  background-size: cover;
+}
+
+ div#kiddo_option_wrapper select {
+    padding: 6px 22px 6px 8px;
+    cursor: pointer;
+    border: 1px solid #a0a0a0;
+    border-radius: 4px;
+    min-height: 36px;
+    display: inline-block !important;
+    color: black;
+    background: white url(data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>) no-repeat scroll right 2px center !important;
+    line-height: 1.2;
+   min-width: 250px;
+   background-color: white;
+}
+div#kiddo_option_wrapper select option:disabled {
+      color: #A0A0A0;
+  }
+  #kiddo_option_wrapper > div {
+    margin-bottom: 20px;
+  }
+
+  .kiddo_option {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+  .kiddo_option label span {
+    color: rgb(18 18 18 / 61%);
+}
+</style>
+
+<div class="accordion">
+  
+  <div id="kiddoBrush1" class="accordion-section active">
+    
+    <div class="accordion-title" onclick="toggleSection(1)">
+      
+      KiddoBrush 1
+      <!-- <span>-- Please Select Option --</span> -->
+      <svg class="icon icon-caret" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="accordion-content active">
+
+<div id="kiddo_option_wrapper">
+
+   <!--- Brush Style Area Start-->
+  <div class="style_wrapper">
+    <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0760/0662/1462/files/blue_owl.jpg)">
+    </div>
+    
+   <div class="kiddo_option">
+      <label>Brush Style: <span id="selectedStyle"> Blue owl </span></label>
+      
+      <select value="Blue Owl">
+        <option disabled>Choose one</option>
+        <option value="Blue Owl">Blue owl</option>
+        <option value="Yellow Dog">Yellow Dog</option>
+        <option value="Pink Cat">Pink Cat</option>
+        <option value="White Panda">White Panda</option>
+      </select>
+
+      
+    </div>
+    
+  </div>
+ <!--- Brush Style Area End-->
+
+  
+    <!-- Brush Size Area Start-->
+  <div class="age_wrapper">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-1.jpg?v=1697520658)">
+    </div>
+    
+    <div class="kiddo_option">
+      <label>Brush Size: <span id="selectedStyle"> Ages 3 - 5  </span></label>
+      
+      <select >
+        <option disabled>Choose one</option>
+        <option value="Ages 3 - 5">Ages 3 - 5</option>
+        <option value="Ages 6 - 8">Ages 6 - 8</option>
+        <option value="Ages 9 - 12">Ages 9 - 12</option>
+      </select>
+    </div>
+
+    <!-- <p class="line-item-property__field">
+    <input novalidate id="brush-size" name="properties[Brush Size]" type="text" value="Ages 3 - 5">
+    </p> -->
+    
+  </div>
+
+    <!--- Brush Size Area End-->
+
+  
+    <!---Toothpaste Flavor Area Start-->
+  <div class="toothpaste_wrapper">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/chocolate-1.jpg?v=1697520658)">
+    </div>
+
+    <div class="kiddo_option">
+      <label>Toothpaste Flavor: <span id="selectedStyle"> Chocolate Fluoride </span></label>
+      
+      <select>
+        <option disabled>Choose one</option>
+        <option value="Chocolate Fluoride">Chocolate Fluoride</option>
+        <option value="Strawberry Fluoride">Strawberry Fluoride</option>
+        <option value="Mint Fluoride">Mint Fluoride</option>
+        <option value="Bubblegum Fluoride">Bubblegum Fluoride</option>
+          <option value="Orange Fluoride">Orange Fluoride</option>
+
+        <option value="Chocolate Non-Fluoride">Chocolate Non-Fluoride</option>
+        <option value="Strawberry Non-Fluoride">Strawberry Non-Fluoride</option>
+        <!-- <option value="Mint Non-Fluoride">Mint Non-Fluoride</option> -->
+        <option value="Bubblegum Non-Fluoride">Bubblegum Non-Fluoride</option>
+        <!-- <option value="Orange Non-Fluoride">Orange Non-Fluoride</option> -->
+
+ 
+      </select>
+    </div>
+<!-- <p class="line-item-property__field">
+    <input novalidate id="toothpaste-flavor" name="properties[Toothpaste Flavor]" type="text" value="Chocolate Fluoride">
+    </p> -->
+    
+  </div>
+  <!---Toothpaste Flavor Area End--->
+
+  
+</div>
+
+    </div>
+  </div> 
+  
+  <div id="kiddoBrush2" class="accordion-section">
+    
+    <div class="accordion-title" onclick="toggleSection(2)">
+      
+      KiddoBrush 2
+      <!-- <span>-- Please Select Option --</span> -->
+      <svg class="icon icon-caret" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="accordion-content">
+
+<div id="kiddo_option_wrapper">
+
+   <!--- Brush Style Area Start-->
+  <div class="style_wrapper2">
+    <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0760/0662/1462/files/yellow_dog.jpg)">
+    </div>
+    
+    <div class="kiddo_option">
+      <label>Brush Style: <span id="selectedStyle"> Yellow Dog </span></label>
+      
+      <select value="Yellow Dog">
+        <option disabled>Choose one</option>
+        <option value="Blue Owl">Blue owl</option>
+        <option value="Yellow Dog">Yellow Dog</option>
+        <option value="Pink Cat">Pink Cat</option>
+        <option value="White Panda">White Panda</option>
+      </select>
+
+      
+    </div>
+    
+  </div>
+ <!--- Brush Style Area End-->
+
+  
+    <!-- Brush Size Area Start-->
+  <div class="age_wrapper2">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-1.jpg?v=1697520658)">
+    </div>
+    
+   <div class="kiddo_option">
+      <label>Brush Size: <span id="selectedStyle"> Ages 3 - 5  </span></label>
+      
+      <select >
+        <option disabled>Choose one</option>
+        <option value="Ages 3 - 5">Ages 3 - 5</option>
+        <option value="Ages 6 - 8">Ages 6 - 8</option>
+        <option value="Ages 9 - 12">Ages 9 - 12</option>
+      </select>
+    </div>
+
+    <!-- <p class="line-item-property__field">
+    <input novalidate id="brush-size-2" name="properties[Brush Size 2]" type="text" value="Ages 3 - 5">
+    </p> -->
+    
+  </div>
+
+    <!--- Brush Size Area End-->
+
+  
+    <!---Toothpaste Flavor Area Start-->
+  <div class="toothpaste_wrapper2">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/chocolate-1.jpg?v=1697520658)">
+    </div>
+
+     <div class="kiddo_option">
+      <label>Toothpaste Flavor: <span id="selectedStyle"> Chocolate Fluoride </span></label>
+      
+      <select>
+        <option disabled>Choose one</option>
+        <option value="Chocolate Fluoride">Chocolate Fluoride</option>
+        <option value="Strawberry Fluoride">Strawberry Fluoride</option>
+        <option value="Mint Fluoride">Mint Fluoride</option>
+        <option value="Bubblegum Fluoride">Bubblegum Fluoride</option>
+          <option value="Orange Fluoride">Orange Fluoride</option>
+
+        <option value="Chocolate Non-Fluoride">Chocolate Non-Fluoride</option>
+        <option value="Strawberry Non-Fluoride">Strawberry Non-Fluoride</option>
+        <!-- <option value="Mint Non-Fluoride">Mint Non-Fluoride</option> -->
+        <option value="Bubblegum Non-Fluoride">Bubblegum Non-Fluoride</option>
+        <!-- <option value="Orange Non-Fluoride">Orange Non-Fluoride</option> -->
+
+ 
+      </select>
+    </div>
+<!-- <p class="line-item-property__field">
+    <input novalidate id="toothpaste-flavor-2" name="properties[Toothpaste Flavor 2]" type="text" value="Chocolate Fluoride">
+    </p> -->
+    
+  </div>
+  <!---Toothpaste Flavor Area End--->
+
+  
+</div>
+
+    </div>
+  </div>
+  
+  <div id="kiddoBrush3" class="accordion-section">
+    
+    <div class="accordion-title" onclick="toggleSection(3)">
+      
+      KiddoBrush 3
+      <!-- <span>-- Please Select Option --</span> -->
+      <svg class="icon icon-caret" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="accordion-content ">
+
+<div id="kiddo_option_wrapper">
+
+   <!--- Brush Style Area Start-->
+  <div class="style_wrapper3">
+    <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0760/0662/1462/files/pink_cat.jpg)">
+    </div>
+    
+    <div class="kiddo_option">
+      <label>Brush Style: <span id="selectedStyle"> Pink Cat </span></label>
+      
+      <select value="Pink Cat">
+        <option disabled>Choose one</option>
+        <option value="Blue Owl">Blue owl</option>
+        <option value="Yellow Dog">Yellow Dog</option>
+        <option value="Pink Cat">Pink Cat</option>
+        <option value="White Panda">White Panda</option>
+      </select>
+
+      
+    </div>
+    
+  </div>
+ <!--- Brush Style Area End-->
+
+  
+    <!--- Brush Size Area Start-->
+  <div class="age_wrapper3">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-1.jpg?v=1697520658)">
+    </div>
+    
+    <div class="kiddo_option">
+      <label>Brush Size: <span id="selectedStyle"> Ages 3 - 5  </span></label>
+      
+      <select >
+        <option disabled>Choose one</option>
+        <option value="Ages 3 - 5">Ages 3 - 5</option>
+        <option value="Ages 6 - 8">Ages 6 - 8</option>
+        <option value="Ages 9 - 12">Ages 9 - 12</option>
+      </select>
+    </div>
+
+    <!-- <p class="line-item-property__field">
+    <input novalidate id="brush-size-3" name="properties[Brush Size 3]" type="text" value="Ages 3 - 5">
+    </p> -->
+    
+  </div>
+
+    <!--- Brush Size Area End-->
+
+  
+    <!---Toothpaste Flavor Area Start-->
+  <div class="toothpaste_wrapper3">
+     <div class="preview" style="background-image: url(https://cdn.shopify.com/s/files/1/0567/6679/1817/files/chocolate-1.jpg?v=1697520658)">
+    </div>
+
+     <div class="kiddo_option">
+      <label>Toothpaste Flavor: <span id="selectedStyle"> Chocolate Fluoride </span></label>
+      
+      <select>
+        <option disabled>Choose one</option>
+        <option value="Chocolate Fluoride">Chocolate Fluoride</option>
+        <option value="Strawberry Fluoride">Strawberry Fluoride</option>
+        <option value="Mint Fluoride">Mint Fluoride</option>
+        <option value="Bubblegum Fluoride">Bubblegum Fluoride</option>
+          <option value="Orange Fluoride">Orange Fluoride</option>
+
+        <option value="Chocolate Non-Fluoride">Chocolate Non-Fluoride</option>
+        <option value="Strawberry Non-Fluoride">Strawberry Non-Fluoride</option>
+        <!-- <option value="Mint Non-Fluoride">Mint Non-Fluoride</option> -->
+        <option value="Bubblegum Non-Fluoride">Bubblegum Non-Fluoride</option>
+        <!-- <option value="Orange Non-Fluoride">Orange Non-Fluoride</option> -->
+
+ 
+      </select>
+    </div>
+<!-- <p class="line-item-property__field">
+    <input novalidate id="toothpaste-flavor-3" name="properties[Toothpaste Flavor 3]" type="text" value="Chocolate Fluoride">
+    </p> -->
+    
+  </div>
+  <!---Toothpaste Flavor Area End--->
+
+  
+</div>
+
+    </div>
+  </div>
+</div>
+
+   
+
+
+<script>
+
+// 
+let icons = {
+  "Blue Owl": "https://cdn.shopify.com/s/files/1/0760/0662/1462/files/blue_owl.jpg?v=1695822050",
+  "Yellow Dog": "https://cdn.shopify.com/s/files/1/0760/0662/1462/files/yellow_dog.jpg?v=1695822050",
+  "Pink Cat": "https://cdn.shopify.com/s/files/1/0760/0662/1462/files/pink_cat.jpg?v=1695822050",
+  "White Panda": "https://cdn.shopify.com/s/files/1/0760/0662/1462/files/white_panda.jpg?v=1695822051",
+
+  "Ages 3 - 5" : "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-1.jpg?v=1697520658",
+  "Ages 6 - 8": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-2.jpg?v=1697520658",
+  "Ages 9 - 12" : "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/brush-3.png?v=1697520658",
+
+  "Chocolate Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/chocolate-1.jpg?v=1697520658",
+  "Strawberry Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/strawberry-1.jpg?v=1697520658",
+  "Mint Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/mint-1.jpg?v=1697520657",
+  "Bubblegum Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/bubblegum-1.jpg?v=1697520658",
+  "Orange Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/orange-1.jpg?v=1697520658",
+
+   "Chocolate Non-Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/chocolate-1.jpg?v=1697520658",
+  "Strawberry Non-Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/strawberry-1.jpg?v=1697520658",
+  "Mint Non-Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/mint-1.jpg?v=1697520657",
+  "Bubblegum Non-Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/bubblegum-1.jpg?v=1697520658",
+  "Orange Non-Fluoride": "https://cdn.shopify.com/s/files/1/0567/6679/1817/files/orange-1.jpg?v=1697520658"
+
+  
+  
+}
+
+  let bundleIndex = 0 
+
+  let checkIfItsLoaded = setInterval(()=> {
+
+    if(document.querySelector('.age_wrapper')) {
+
+      const styleWrapper = document.querySelector('.style_wrapper')
+const ageWrapper = document.querySelector('.age_wrapper')
+const toothpasteWrapper = document.querySelector('.toothpaste_wrapper')
+const styleWrapper2 = document.querySelector('.style_wrapper2')
+const ageWrapper2 = document.querySelector('.age_wrapper2')
+const toothpasteWrapper2 = document.querySelector('.toothpaste_wrapper2')
+const styleWrapper3 = document.querySelector('.style_wrapper3')
+const ageWrapper3 = document.querySelector('.age_wrapper3')
+const toothpasteWrapper3 = document.querySelector('.toothpaste_wrapper3')
+const bundle1 = document.getElementById("bundle1")
+const bundle2 = document.getElementById("bundle2")
+const bundle3 = document.getElementById("bundle3")
+
+      
+     createPreview(styleWrapper,bundle1,0) 
+       createPreview(ageWrapper,bundle1,1)
+      createPreview(toothpasteWrapper,bundle1,2)
+
+        createPreview(styleWrapper2,bundle2,0) 
+       createPreview(ageWrapper2,bundle2,1)
+      createPreview(toothpasteWrapper2,bundle2,2)
+
+        createPreview(styleWrapper3,bundle3,0) 
+       createPreview(ageWrapper3,bundle3,1)
+      createPreview(toothpasteWrapper3,bundle3,2)
+      
+
+      
+      clearInterval(checkIfItsLoaded)
+    }
+    
+},1000)
+
+
+
+
+
+   function createPreview(wrapper,capturer,capturerInputIndex) {
+
+    wrapper.querySelector('select').addEventListener('change', (e) => {
+    
+    let selectedOptionValue = e.target.value;
+
+    // Changing value of label
+    e.target.previousElementSibling.querySelector('span').textContent = selectedOptionValue
+
+wrapper.querySelector(".preview").style.backgroundImage=`url(${icons[selectedOptionValue]})`
+    
+    console.log(selectedOptionValue);
+
+      capturer.querySelectorAll('.line-item-property__field input')[capturerInputIndex].value = selectedOptionValue
+    
+})
+    
+  }
+
+  
+  // It will preload all images so that it won't take time to load when its selected
+  
+const preloadImages = () => {
+  for (const optionValue in icons) {
+    const img = new Image();
+    img.src = icons[optionValue];
+  }
+};
+
+// Call the preloadImages function when the page loads
+window.addEventListener('load', preloadImages);
+
+  
+
+
+  let intervalId;
+
+function checkCondition() {
+
+    if (document.querySelector('.cd-cart-overlay')) {
+    clearInterval(intervalId); 
+
+      const targetElement = document.querySelector('.cd-cart-overlay');
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    
+    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+      if (targetElement.classList.contains('is-open')) {
+        
+        fetchDataAndHideUpsell() 
+        
+      }
+    }
+  });
+});
+
+const config = { attributes: true };
+
+observer.observe(targetElement, config);
+
+      
+        }
+}
+
+ intervalId = setInterval(checkCondition, 1000);
+
+
+  async function fetchDataAndHideUpsell() {
+  try {
+    const response = await fetch('/cart.js');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+
+    data.items.forEach(item => {
+      const upsellItem = document.querySelector('.cd-cart-upsell-item-add');
+      if (upsellItem) {
+      
+        // Checks the item id
+        if (item.id === 47404445729046 && item.hasOwnProperty('selling_plan_allocation')) {
+          // hides the upsell
+          upsellItem.style.display = 'none';
+        } else {
+          //otherwise replace text content of the button
+          upsellItem.innerHTML = 'Select Flavors';
+        }
+      }
+
+      const upsellElement = document.querySelector('.cd-cart-upsells-vertical');
+      if (upsellElement) {
+        // Checks the item id
+        if (item.id === 47404445729046 && item.hasOwnProperty('selling_plan_allocation')) {
+          // hides the upsell
+          upsellElement.style.display = 'none';
+        }
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching "cart.js":', error);
+  }
+}
+
+
+
+
+  
+document.addEventListener('DOMContentLoaded', function () {
+   // Hide KiddoBrush 2 and 3 on page load
+    document.getElementById('kiddoBrush2').style.display = 'none';
+    document.getElementById('kiddoBrush3').style.display = 'none';
+  
+    setTimeout(function () {
+      document.querySelectorAll('.new-form-option').forEach((el, index) => {
+        el.addEventListener('click', () => {
+          // Hide or show KiddoBrush options based on the clicked index
+
+          bundleIndex = index
+          
+          if (index === 0) {
+
+           bundle2.innerHTML=''
+              bundle3.innerHTML=''
+            
+            document.getElementById('kiddoBrush2').style.display = 'none';
+            document.getElementById('kiddoBrush3').style.display = 'none';
+          } else if (index === 1) {
+
+            bundle3.innerHTML=''
+            
+             const lineItem = `   <p class="line-item-property__field">
+                  <input novalidate id="brush-style-2" name="properties[Brush Style 2]" type="text" value="Yellow Dog">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="brush-size-2" name="properties[Brush Size 2]" type="text" value="Ages 3 - 5">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="toothpaste-flavor-2" name="properties[Toothpaste Flavor 2]" type="text" value="Chocolate Fluoride">
+                  </p>`
+
+            bundle2.insertAdjacentHTML('beforeend', lineItem)
+            
+            document.getElementById('kiddoBrush2').style.display = 'block';
+            document.getElementById('kiddoBrush3').style.display = 'none';
+          } else {
+
+            if(bundle2.innerHTML == '') {
+              const lineItem2 = `   <p class="line-item-property__field">
+                  <input novalidate id="brush-style-2" name="properties[Brush Style 2]" type="text" value="Yellow Dog">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="brush-size-2" name="properties[Brush Size 2]" type="text" value="Ages 3 - 5">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="toothpaste-flavor-2" name="properties[Toothpaste Flavor 2]" type="text" value="Chocolate Fluoride">
+                  </p>`
+
+            bundle2.insertAdjacentHTML('beforeend', lineItem2)
+            }
+
+            const lineItem = `<p class="line-item-property__field">
+                  <input novalidate id="brush-style-3" name="properties[Brush Style 3]" type="text" value="Pink Cat">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="brush-size-3" name="properties[Brush Size 3]" type="text" value="Ages 3 - 5">
+                  </p>
+                  <p class="line-item-property__field">
+                  <input novalidate id="toothpaste-flavor-3" name="properties[Toothpaste Flavor 3]" type="text" value="Chocolate Fluoride">
+                  </p>`
+
+             bundle3.insertAdjacentHTML('beforeend', lineItem)
+            
+            document.getElementById('kiddoBrush1').style.display = 'block';
+            document.getElementById('kiddoBrush2').style.display = 'block';
+            document.getElementById('kiddoBrush3').style.display = 'block';
+          }
+
+          // Toggle accordion section based on the clicked index
+          toggleSection(index + 1);
+        });
+      });
+    
+      
+    }, 1000); // Adjust the delay time if needed
+  });
+
+  function toggleSection(sectionNumber) {
+    var content = document.querySelector('.accordion-section:nth-child(' + sectionNumber + ') .accordion-content');
+    var section = document.querySelector('.accordion-section:nth-child(' + sectionNumber + ')');
+
+    content.classList.toggle('active');
+    section.classList.toggle('active');
+  }
+
+  
+
+</script>
